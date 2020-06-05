@@ -12,7 +12,7 @@ class AdminLteAsset extends BaseAdminLteAsset
 {
     public $sourcePath = '@vendor/almasaeed2010/adminlte/dist';
     public $css = [
-        'css/AdminLTE.min.css',
+        'css/adminlte.min.css',
     ];
     public $js = [
         'js/adminlte.min.js'
@@ -41,7 +41,7 @@ class AdminLteAsset extends BaseAdminLteAsset
                 throw new Exception('Invalid skin specified');
             }
 
-            $this->css[] = sprintf('css/skins/%s.min.css', $this->skin);
+            //$this->css[] = sprintf('css/skins/%s.min.css', $this->skin);
         }
 
         parent::init();
