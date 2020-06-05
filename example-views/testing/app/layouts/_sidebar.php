@@ -108,7 +108,7 @@ for ($i = 0; $i < 25; $i++) {
     ];
 }
 
-echo dmstr\widgets\Menu::widget([
+echo seisvalt\widgets\Menu::widget([
     'items' => \yii\helpers\ArrayHelper::merge($favouriteMenuItems, $menuItems),
 ]);
 ?>

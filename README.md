@@ -131,7 +131,7 @@ class AdminLtePluginAsset extends AssetBundle
         // more plugin CSS here
     ];
     public $depends = [
-        'dmstr\web\AdminLteAsset',
+        'seisvalt\web\AdminLteAsset',
     ];
 }
 ```
@@ -148,7 +148,7 @@ By default the extension uses blue skin for AdminLTE. You can change it in confi
 'components' => [
     'assetManager' => [
         'bundles' => [
-            'dmstr\web\AdminLteAsset' => [
+            'seisvalt\web\AdminLteAsset' => [
                 'skin' => 'skin-black',
             ],
         ],
@@ -158,7 +158,7 @@ By default the extension uses blue skin for AdminLTE. You can change it in confi
 
 And then just replace class of body `skin-blue`. You can use `AdminLteHelper::skinClass()` if you don't want to alter every view file when you change skin color. 
 ```html
-<body class="<?= \dmstr\helpers\AdminLteHelper::skinClass() ?>">
+<body class="<?= \seisvalt\helpers\AdminLteHelper::skinClass() ?>">
 ```
 
 **Note:** Use `AdminLteHelper::skinClass()` only if you override the skin through configuration. Otherwise you will not get the correct css class of body.
@@ -288,5 +288,5 @@ Further Information
 
 For AdminLTE documentation, please read https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
 
-> Namespacing rules follow the Yii 2.0 framework structure, eg. `dmstr\web` for the Asset Bundle.
+> Namespacing rules follow the Yii 2.0 framework structure, eg. `seisvalt\web` for the Asset Bundle.
  
