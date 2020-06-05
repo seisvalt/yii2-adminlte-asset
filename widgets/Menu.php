@@ -70,6 +70,8 @@ class Menu extends \yii\widgets\Menu
      */
     protected function renderItem($item)
     {
+	    $active = $item['active'] ? 'active': '';
+	    
         if (isset($item['items'])) {
             $labelTemplate = '<a href="{url}" >{icon}<p>{label}<i class="right fas fa-angle-left"></i></p></a>';
             $linkTemplate = '<a href="{url}" class="nav-link {class} {active}">{icon}<p>{label}<i class="right fas fa-angle-left"></i></p></a>';
