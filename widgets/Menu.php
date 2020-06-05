@@ -13,13 +13,13 @@ class Menu extends \yii\widgets\Menu
     /**
      * @inheritdoc
      */
-    public $linkTemplate = '<a href="{url}">{icon} {label}</a>';
+    public $linkTemplate = '<a href="{url}" class="nav-link {class} {active}">{icon} {label}</a>';
     /**
      * @inheritdoc
      * Styles all labels of items on sidebar by AdminLTE
      */
     public $labelTemplate = '<span>{label}</span>';
-    public $submenuTemplate = "\n<ul class='treeview-menu' {show}>\n{items}\n</ul>\n";
+    public $submenuTemplate = "\n<ul class='nav nav-treeview' {show}>\n{items}\n</ul>\n";
     public $activateParents = true;
     public $defaultIconHtml = '<i class="fa fa-circle-o"></i> ';
     public $options = ['class' => 'sidebar-menu', 'data-widget' => 'tree'];
@@ -28,7 +28,7 @@ class Menu extends \yii\widgets\Menu
      * @var string is prefix that will be added to $item['icon'] if it exist.
      * By default uses for Font Awesome (http://fontawesome.io/)
      */
-    public static $iconClassPrefix = 'fa fa-';
+    public static $iconClassPrefix = 'nav-icon fas fa-';
 
     private $noDefaultAction;
     private $noDefaultRoute;
@@ -71,9 +71,9 @@ class Menu extends \yii\widgets\Menu
     protected function renderItem($item)
     {
         if (isset($item['items'])) {
-            $labelTemplate = '<a href="{url}">{icon} {label} <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>';
-            $linkTemplate = '<a href="{url}">{icon} {label} <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>';
-        } else {
+            $labelTemplate = '<a href="{url}" >{icon}<p>{label}<i class="right fas fa-angle-left"></i></p></a>';
+            $linkTemplate = '<a href="{url}" class="nav-link {class} {active}">{icon}<p>{label}<i class="right fas fa-angle-left"></i></p></a>';
+          } else {
             $labelTemplate = $this->labelTemplate;
             $linkTemplate = $this->linkTemplate;
         }
@@ -83,6 +83,8 @@ class Menu extends \yii\widgets\Menu
             '{icon}' => empty($item['icon']) ? $this->defaultIconHtml
                 : '<i class="' . static::$iconClassPrefix . $item['icon'] . '"></i> ',
             '{url}' => isset($item['url']) ? Url::to($item['url']) : 'javascript:void(0);',
+            '{class}' => ($item['class']) ?? '',
+            '{active}' => $active,
         ];
 
         $template = ArrayHelper::getValue($item, 'template', isset($item['url']) ? $linkTemplate : $labelTemplate);
@@ -126,9 +128,9 @@ class Menu extends \yii\widgets\Menu
                     '{items}' => $this->renderItems($item['items']),
                 ]);
 				if (isset($options['class'])) {
-					$options['class'] .= ' treeview';
+					$options['class'] .= ' nav-item has-treeview';
 				} else {
-					$options['class'] = 'treeview';
+					$options['class'] = 'nav-item has-treeview';
 				}
             }
             $lines[] = Html::tag($tag, $menu, $options);
