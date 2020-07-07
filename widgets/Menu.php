@@ -18,7 +18,7 @@ class Menu extends \yii\widgets\Menu
      * @inheritdoc
      * Styles all labels of items on sidebar by AdminLTE
      */
-    public $labelTemplate = '<span>{label}</span>';
+    public $labelTemplate = '<p>{label}</p>';
     public $submenuTemplate = "\n<ul class='nav nav-treeview' {show}>\n{items}\n</ul>\n";
     public $activateParents = true;
     public $defaultIconHtml = '<i class="fa fa-circle-o"></i> ';
